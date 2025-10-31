@@ -147,7 +147,7 @@ MonoBehaviour:
     value: {r: 1, g: 1, b: 1, a: 1}
   hueShift:
     overrideState: 1
-    value: 0
+    value: 5
   saturation:
     overrideState: 1
     value: -5
@@ -1453,10 +1453,7 @@ MonoBehaviour:
   - {fileID: -2764166125380640005}
   - {fileID: 7063751083948953277}
   - {fileID: 4008503008093837287}
-  - {fileID: 3289185694092194141}
   - {fileID: 4347437319767449532}
-  - {fileID: 6602250233059643806}
-  - {fileID: -8732298887268084736}
   - {fileID: -6421755354217045275}
 --- !u!114 &3289185694092194141
 MonoBehaviour:
@@ -1566,7 +1563,7 @@ MonoBehaviour:
     value: 1024
   ColorDepth:
     overrideState: 1
-    value: 0.75
+    value: 1
   DitherPattern:
     overrideState: 1
     value: {fileID: 2800000, guid: debc81e4501d8be4c8897065f7832f88, type: 3}
