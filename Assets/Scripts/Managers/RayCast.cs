@@ -13,6 +13,8 @@ public class RayCast : MonoBehaviour
 
     public Texture[] interactIcons;
 
+    private IUsable lastInteraction;
+
     private GameObject hitObj = null;
     public void Awake()
     {
@@ -31,7 +33,16 @@ public class RayCast : MonoBehaviour
                 GameObject obj = hit.collider.gameObject;
                 if (obj.GetComponent<IUsable>() != null)
                 {
-                    obj.GetComponent<IUsable>().Use();
+                    lastInteraction = obj.GetComponent<IUsable>();
+                    lastInteraction.Use();
+                }
+            }
+
+            if (Input.GetKeyUp(KeyCode.E) || Input.GetMouseButtonUp(0))
+            {
+                if (lastInteraction != null)
+                {
+                    lastInteraction.OnExitInteraction();
                 }
             }
 
@@ -68,6 +79,12 @@ public class RayCast : MonoBehaviour
         }
         else
         {
+            if (lastInteraction != null)
+            {
+                lastInteraction.OnExitInteraction();
+                lastInteraction = null;
+            }
+                
             crosshair.SetActive(false);
             text.text = "";
             if (hitObj != null)
@@ -95,4 +112,9 @@ public class RayCast : MonoBehaviour
 public interface IUsable
 {
     public void Use();
+
+    public void OnExitInteraction()
+    {
+        
+    }
 }
