@@ -18,6 +18,7 @@ public class G
 {
     public static GameManager gm;
     public static RigidbodyFirstPersonController rigidcontroller;
+    public static Inventory inventory;
     public static RayCast raycast;
     public static Fader fader;
     public static Shaker shaker;
