@@ -15,6 +15,7 @@ public class FocusObject : MonoBehaviour, IUsable
     [SerializeField] private float transitionSpeed = 2.0f;
     [SerializeField] private float returnSpeed = 2.0f;
     [SerializeField] private AnimationCurve speedCurve = AnimationCurve.Linear(0f, 0f, 1f, 1f);
+    public AudioClip useSFX;
 
     private bool isMoving = false;
     private bool movingToTarget = false;
@@ -63,6 +64,7 @@ public class FocusObject : MonoBehaviour, IUsable
             G.rigidcontroller.enabled = false;
             G.rigidcontroller.GetComponent<Rigidbody>().isKinematic = true;
             StartCoroutine(MoveToTarget());
+            G.CreateSFX(useSFX);
         }
     }
 

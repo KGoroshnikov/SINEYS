@@ -1,7 +1,7 @@
 using System.Collections;
 using UnityEngine;
 
-[RequireComponent(typeof(Renderer))]
+
 public class TextureCycler : MonoBehaviour
 {
     [Header("Textures & timing")]

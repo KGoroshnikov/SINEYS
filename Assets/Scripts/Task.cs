@@ -10,6 +10,7 @@ public class Task : MonoBehaviour
     public GameObject next;
     public GameObject iconPref;
     List<GameObject> itemSlots;
+    public bool last;
     private void Start()
     {
         itemSlots = new List<GameObject>();
@@ -32,11 +33,20 @@ public class Task : MonoBehaviour
         {
             itemSlots[i].GetComponentInChildren<TextMeshProUGUI>().text = $"{G.parasite.eated[resources[i].id]}/{resources[i].count}";
         }
+        if (last && !G.parasite.death)
+        {
+            if (CheckTask())
+            {
+                gameObject.SetActive(false);
+                G.parasite.Kill();
+                
+            }
+        }
     }
 
     public void NextTask()
     {
-        if (CheckTask())
+        if (CheckTask() && !last)
         {
             next.SetActive(true);
             gameObject.SetActive(false);
