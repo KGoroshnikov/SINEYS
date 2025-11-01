@@ -1032,7 +1032,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1e6a7bd08fd43984eb445ac02b137ca0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ID: 2
+  ID: 1
   rb: {fileID: 0}
   col: {fileID: 6754039147800249873}
   weight: 2
