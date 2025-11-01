@@ -11,6 +11,10 @@ public class WallParasite : MonoBehaviour, IUsable
     public Deformable deformable;
     public Deformable deformable2;
     public Shaker rotShaker;
+    public bool death;
+    public Animation animDeath;
+    public GameObject bloodScreen;
+    public GameObject fossil;
     private void Awake()
     {
         G.parasite = this;
@@ -18,6 +22,7 @@ public class WallParasite : MonoBehaviour, IUsable
 
     public void Use()
     {
+        if (death) return;
         for(int i = 0; i < currentTask.resources.Length; i++)
         {
             if (currentTask.resources[i].count <= 0) continue;
@@ -42,7 +47,6 @@ public class WallParasite : MonoBehaviour, IUsable
         deformable.AddDeformer(pipeSphere.GetComponentInChildren<SpherifyDeformer>());
         deformable2.AddDeformer(pipeSphere.GetComponentInChildren<SpherifyDeformer>());
         GetComponent<Animation>().Play();
-        StopAllCoroutines();
         StartCoroutine(Shake());
     }
 
@@ -64,5 +68,35 @@ public class WallParasite : MonoBehaviour, IUsable
         {
             eated[i] = 0;
         }
+    }
+
+    public void Kill()
+    {
+        death = true;
+        StartCoroutine(Death());
+    }
+    IEnumerator Death()
+    {
+        Destroy(GetComponent<Interactable>());
+        yield return new WaitForSeconds(0.5f);
+        animDeath.Play();
+        rotShaker.shakeStrength = 3;
+        rotShaker.shakeSpeed = 5;
+        yield return new WaitForSeconds(0.25f);
+        G.shaker.ShakeIt(5);
+        yield return new WaitForSeconds(4.25f);
+        bloodScreen.SetActive(true);
+        G.rigidcontroller.enabled = false;
+        G.gm.cantEsc = true;
+        yield return new WaitForSeconds(0.1f);
+        fossil.SetActive(true);
+        Delay.InvokeDelayed(() => AfterDeath(), 2.5f);
+        animDeath.gameObject.SetActive(false);
+
+    }
+    void AfterDeath()
+    {
+        G.rigidcontroller.enabled = true;
+        G.gm.cantEsc = false;
     }
 }
