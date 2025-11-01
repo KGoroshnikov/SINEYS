@@ -30,6 +30,9 @@ public class Upgrade : MonoBehaviour
                 case 0:
                     G.rigidcontroller.movementSettings.JumpForce = value;
                     break;
+                case 1:
+                    //G.inventory.capacity = value;
+                    break;
             }
             gameObject.SetActive(false);
             nextUpgrade.SetActive(true);
