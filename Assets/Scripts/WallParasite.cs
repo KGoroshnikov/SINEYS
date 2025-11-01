@@ -16,6 +16,8 @@ public class WallParasite : MonoBehaviour, IUsable
     public GameObject bloodScreen;
     public GameObject fossil;
     public AudioClip feedSFX;
+    public AudioClip deathSFX;
+    public AudioClip explosionSFX;
     private void Awake()
     {
         G.parasite = this;
@@ -39,10 +41,9 @@ public class WallParasite : MonoBehaviour, IUsable
                     Quaternion.Euler(Random.Range(0, 360), Random.Range(0, 360), Random.Range(0, 360)), 0.4f, EatObject);
 
             eated[currentTask.resources[i].id] += 1;
-            G.CreateSFX(feedSFX);
             break;
         }
-
+        G.CreateSFX(feedSFX,0.65f,Random.Range(0.75f,0.9f));
         currentTask.DisplayUpdate();
         GameObject pipeSphere = Instantiate(pipeSpherePref, pipeSpherePref.transform.parent);
         pipeSphere.SetActive(true);
@@ -85,9 +86,11 @@ public class WallParasite : MonoBehaviour, IUsable
         rotShaker.shakeStrength = 3;
         rotShaker.shakeSpeed = 5;
         yield return new WaitForSeconds(0.25f);
+        Delay.InvokeDelayed(()=> G.CreateSFX(deathSFX, 1, 0.8f),0.2f);
         G.shaker.ShakeIt(5);
         yield return new WaitForSeconds(4f);
         bloodScreen.SetActive(true);
+        G.CreateSFX(explosionSFX);
         G.rigidcontroller.enabled = false;
         G.gm.cantEsc = true;
         yield return new WaitForSeconds(0.85f);
