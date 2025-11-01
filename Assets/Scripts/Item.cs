@@ -9,8 +9,12 @@ public class Item : MonoBehaviour, IUsable
     [SerializeField] private int weight;
     public UnityEvent<GameObject> onPickup;
 
+    [HideInInspector] public bool canBeUsed = true;
+
     public void Use()
     {
+        if (!canBeUsed) return;
+
         if (G.inventory.GetRemainingCapacity() < weight)
         {
             G.message.Message("ИНВЕНТАРЬ ПОЛОН");
