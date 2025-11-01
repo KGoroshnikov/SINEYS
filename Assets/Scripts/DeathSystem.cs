@@ -15,6 +15,7 @@ public class DeathSystem : MonoBehaviour
     void Awake()
     {
         G.deathSystem = this;
+        G.playerDied = false;
     }
 
     // 0 - doors
@@ -22,6 +23,7 @@ public class DeathSystem : MonoBehaviour
     public void PlayerDied(int deathId)
     {
         if (playerDead) return;
+        Debug.Log("PLAYER DIED !!!11");
         playerDead = true;
         G.playerDied = true;
         StartCoroutine(deathProcess(deathId));
