@@ -19,7 +19,7 @@ public class ItemInv
 
 public class Inventory : MonoBehaviour
 {
-    [SerializeField] private int maxCapacity;
+    public int maxCapacity;
     [SerializeField] private int remainingCapacity;
     [SerializeField] private List<ItemInv> inv = new List<ItemInv>();
 
