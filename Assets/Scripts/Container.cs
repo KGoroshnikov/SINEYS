@@ -13,7 +13,6 @@ public class Container : MonoBehaviour
     private void Awake()
     {
         G.container = this;
-        itemsAmount = new int[6];
     }
 
     public void AddItem(int id)
