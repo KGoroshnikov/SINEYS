@@ -21,10 +21,14 @@ public class Doors : MonoBehaviour
 
     void FixedUpdate()
     {
-        doors[0].localPosition = new Vector3(Mathf.Clamp(doors[0].localPosition.x + currentSpeed * Time.deltaTime, minXCoord, maxXCoord),
-            doors[0].localPosition.y, doors[0].localPosition.z);
-        doors[1].localPosition = new Vector3(Mathf.Clamp(doors[1].localPosition.x - currentSpeed * Time.deltaTime, -maxXCoord, -minXCoord),
-            doors[1].localPosition.y, doors[1].localPosition.z);
+        doors[0].localPosition = new Vector3(doors[0].localPosition.x, doors[0].localPosition.y, Mathf.Clamp(doors[0].localPosition.z + currentSpeed * Time.deltaTime, minXCoord, maxXCoord));
+        doors[1].localPosition = new Vector3(doors[1].localPosition.x,
+            doors[1].localPosition.y, Mathf.Clamp(doors[1].localPosition.z - currentSpeed * Time.deltaTime, -maxXCoord, -minXCoord));
+
+        if (Mathf.Abs(doors[0].localPosition.z - maxXCoord) <= 0.05f && Mathf.Abs(doors[1].localPosition.z + maxXCoord) <= 0.05f)
+        {
+            G.deathSystem.PlayerDied(0);
+        }
     }
 
     public void CloseDoors()
