@@ -88,9 +88,9 @@ public class WallParasite : MonoBehaviour, IUsable
         bloodScreen.SetActive(true);
         G.rigidcontroller.enabled = false;
         G.gm.cantEsc = true;
-        yield return new WaitForSeconds(0.1f);
+        yield return new WaitForSeconds(0.85f);
         fossil.SetActive(true);
-        Delay.InvokeDelayed(() => AfterDeath(), 2.5f);
+        Delay.InvokeDelayed(() => AfterDeath(), 3.5f);
         animDeath.gameObject.SetActive(false);
 
     }
