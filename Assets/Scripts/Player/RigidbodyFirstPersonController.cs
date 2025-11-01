@@ -100,6 +100,8 @@ public class RigidbodyFirstPersonController : MonoBehaviour
     [SerializeField] private float ladderClimbSpeed = 4f;
     [SerializeField] private float ladderSlideDownSpeed = 2f;
 
+    private bool frozen;
+
 
     public Vector3 Velocity
     {
@@ -147,8 +149,15 @@ public class RigidbodyFirstPersonController : MonoBehaviour
         Gizmos.DrawLine(origin, origin + Vector3.up * (m_Capsule.height * 0.5f + 0.1f));
     }
 
+    public void SetFreezeState(bool a)
+    {
+        frozen = a;
+    }
+    
     private void Update()
     {
+        if (frozen) return;
+
         RotateView();
 
         if (Input.GetButtonDown("Jump") && !m_Jump && !movementSettings.cantJump && (!movementSettings.m_Croaching || !IsObstacleAbove()))
@@ -171,7 +180,7 @@ public class RigidbodyFirstPersonController : MonoBehaviour
                 }
             }
         }
-        if(movementSettings.m_Croaching && Input.GetKey(KeyCode.LeftShift) && !GetComponent<Animation>().isPlaying && !IsObstacleAbove())
+        if (movementSettings.m_Croaching && Input.GetKey(KeyCode.LeftShift) && !GetComponent<Animation>().isPlaying && !IsObstacleAbove())
         {
             movementSettings.m_Croaching = false;
             UnCroach();
@@ -258,6 +267,8 @@ public class RigidbodyFirstPersonController : MonoBehaviour
 
     private void FixedUpdate()
     {
+        if (frozen) return;
+        
         if (onLadder)
         {
             HandleLadderMovement();
