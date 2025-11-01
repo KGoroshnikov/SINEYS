@@ -10,6 +10,6 @@ public class Ending : MonoBehaviour
         G.raycast.enabled = false;
         G.rigidcontroller.enabled = false;
         endPanel.SetActive(true);
-        Delay.InvokeDelayed(() => G.ShowCursor(), 1.35f);
+        Delay.InvokeDelayed(() => G.ShowCursor(), 4f);
     }
 }
