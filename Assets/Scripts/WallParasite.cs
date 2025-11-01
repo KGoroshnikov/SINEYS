@@ -84,7 +84,7 @@ public class WallParasite : MonoBehaviour, IUsable
         rotShaker.shakeSpeed = 5;
         yield return new WaitForSeconds(0.25f);
         G.shaker.ShakeIt(5);
-        yield return new WaitForSeconds(4.25f);
+        yield return new WaitForSeconds(4f);
         bloodScreen.SetActive(true);
         G.rigidcontroller.enabled = false;
         G.gm.cantEsc = true;
