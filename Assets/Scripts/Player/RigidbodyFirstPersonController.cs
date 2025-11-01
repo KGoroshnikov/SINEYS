@@ -152,6 +152,7 @@ public class RigidbodyFirstPersonController : MonoBehaviour
     public void SetFreezeState(bool a)
     {
         frozen = a;
+        m_RigidBody.isKinematic = frozen;
     }
     
     private void Update()

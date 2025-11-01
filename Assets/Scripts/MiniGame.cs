@@ -33,7 +33,8 @@ public class MiniGame : MonoBehaviour
     public void StartGame(Transform playerCatchedPos)
     {
         G.rigidcontroller.SetFreezeState(true);
-        //MoveObjects.Instance.AddObjectToMove(G.rigidcontroller.gameObject, playerCatchedPos.position, playerCatchedPos.rotation, 1f);
+        MoveObjects.Instance.AddObjectToMove(G.rigidcontroller.gameObject, playerCatchedPos.position, playerCatchedPos.rotation, 1f);
+        G.rigidcontroller.transform.SetParent(playerCatchedPos);
 
         bulbs[0].sharedMaterial = redGreenBulbs[0];
         bulbs[1].sharedMaterial = redGreenBulbs[0];

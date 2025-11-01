@@ -88,13 +88,11 @@ public class Crane : MonoBehaviour
 
             animator.SetTrigger("Close");
 
+            bool playerTrapped = false;
             if (chasingPlayer && Vector3.Distance(new Vector3(craneObj.position.x, G.rigidcontroller.transform.position.y, craneObj.position.z), G.rigidcontroller.transform.position) <= rangeCatch)
             {
                 G.miniGame.StartGame(playerCatchedPos);
-                while (!gamePassed)
-                {
-                    yield return null;
-                }
+                playerTrapped = true;
             }
 
             yield return new WaitForSeconds(1);
@@ -102,6 +100,11 @@ public class Crane : MonoBehaviour
             while (craneObj.position.y < normalHeight)
             {
                 craneObj.position = Vector3.MoveTowards(craneObj.position, new Vector3(craneObj.position.x, normalHeight, craneObj.position.z), Time.deltaTime * moveDownSpeed);
+                yield return null;
+            }
+
+            while (playerTrapped && !gamePassed)
+            {
                 yield return null;
             }
 
