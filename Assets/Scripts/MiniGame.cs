@@ -25,6 +25,8 @@ public class MiniGame : MonoBehaviour
     private int dir = 1;
     private bool roundActive;
 
+    private bool gameIsActive;
+
     void Awake()
     {
         G.miniGame = this;
@@ -32,6 +34,7 @@ public class MiniGame : MonoBehaviour
 
     public void StartGame(Transform playerCatchedPos)
     {
+        gameIsActive = true;
         G.rigidcontroller.SetFreezeState(true);
         MoveObjects.Instance.AddObjectToMove(G.rigidcontroller.gameObject, playerCatchedPos.position, playerCatchedPos.rotation, 1f);
         G.rigidcontroller.transform.SetParent(playerCatchedPos);
@@ -48,8 +51,11 @@ public class MiniGame : MonoBehaviour
         Invoke("AutoRelesePlayer", autoRelease);
     }
 
-    void AutoRelesePlayer()
+    public void AutoRelesePlayer()
     {
+        if (!gameIsActive) return;
+        gameIsActive = false;
+        G.rigidcontroller.transform.SetParent(null);
         G.rigidcontroller.SetFreezeState(false);
         Invoke("HideObjects", 2);
         CancelInvoke("AutoRelesePlayer");
@@ -126,22 +132,19 @@ public class MiniGame : MonoBehaviour
     {
         if (cntWin >= 2)
         {
+            G.rigidcontroller.transform.SetParent(null);
             G.rigidcontroller.SetFreezeState(false);
             Invoke("HideObjects", 2);
             CancelInvoke("AutoRelesePlayer");
             animator.SetTrigger("Hide");
             roundActive = false;
             G.crane.PassGame();
+            gameIsActive = false;
             return;
         }
 
         dir *= -1;
         RandomizeSectorRotation();
-    }
-
-    void ReleasePlayer()
-    {
-        
     }
 
     void HideObjects()

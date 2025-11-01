@@ -27,6 +27,8 @@ public class Crane : MonoBehaviour
 
     private bool gamePassed = true;
 
+    private bool stopped;
+
     private Vector3 targetPos;
 
     void Awake()
@@ -62,12 +64,27 @@ public class Crane : MonoBehaviour
         chasingPlayer = false;
     }
 
+    public void DisableCrane()
+    {
+        stopped = true;
+    }
+    public void EnableCrane()
+    {
+        stopped = false;
+    }
+
+
     IEnumerator CraneLogic()
     {
         while (true)
         {
             while (Mathf.Abs(transform.position.x - targetPos.x) > 0.02 || Mathf.Abs(craneObj.position.z - targetPos.z) > 0.02)
             {
+                if (stopped)
+                {
+                    yield return null;
+                    continue;
+                }
                 if (chasingPlayer) targetPos = G.rigidcontroller.transform.position;
 
                 transform.position = Vector3.MoveTowards(transform.position, new Vector3(targetPos.x, transform.position.y, transform.position.z), Time.deltaTime * speed);
@@ -80,6 +97,11 @@ public class Crane : MonoBehaviour
 
             while (craneObj.position.y > heightDown)
             {
+                if (stopped)
+                {
+                    yield return null;
+                    continue;
+                }
                 craneObj.position = Vector3.MoveTowards(craneObj.position, new Vector3(craneObj.position.x, heightDown, craneObj.position.z), Time.deltaTime * moveDownSpeed);
                 yield return null;
             }
@@ -99,6 +121,11 @@ public class Crane : MonoBehaviour
 
             while (craneObj.position.y < normalHeight)
             {
+                if (stopped)
+                {
+                    yield return null;
+                    continue;
+                }
                 craneObj.position = Vector3.MoveTowards(craneObj.position, new Vector3(craneObj.position.x, normalHeight, craneObj.position.z), Time.deltaTime * moveDownSpeed);
                 yield return null;
             }
