@@ -144,4 +144,5 @@ MonoBehaviour:
   onPickup:
     m_PersistentCalls:
       m_Calls: []
+  pickupSFX: {fileID: 8300000, guid: 8da6373898880434aa7cb9bc831fd2bf, type: 3}
   canBeUsed: 1

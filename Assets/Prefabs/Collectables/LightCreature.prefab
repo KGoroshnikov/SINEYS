@@ -113,6 +113,8 @@ MonoBehaviour:
   onPickup:
     m_PersistentCalls:
       m_Calls: []
+  pickupSFX: {fileID: 8300000, guid: aeeab599df1e9824f9ed75481e55fa04, type: 3}
+  canBeUsed: 1
 --- !u!1 &815904718778312497
 GameObject:
   m_ObjectHideFlags: 0

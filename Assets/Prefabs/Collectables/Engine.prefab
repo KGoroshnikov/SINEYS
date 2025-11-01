@@ -91,6 +91,7 @@ MonoBehaviour:
   onPickup:
     m_PersistentCalls:
       m_Calls: []
+  pickupSFX: {fileID: 8300000, guid: 810c49838f32f3b48b6532193f302fd7, type: 3}
   canBeUsed: 1
 --- !u!54 &2595850163179997763
 Rigidbody:

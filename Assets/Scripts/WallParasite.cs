@@ -26,6 +26,7 @@ public class WallParasite : MonoBehaviour, IUsable
     public void Use()
     {
         if (death) return;
+        bool food = false;
         for(int i = 0; i < currentTask.resources.Length; i++)
         {
             if (currentTask.resources[i].count <= 0) continue;
@@ -41,16 +42,18 @@ public class WallParasite : MonoBehaviour, IUsable
                     Quaternion.Euler(Random.Range(0, 360), Random.Range(0, 360), Random.Range(0, 360)), 0.4f, EatObject);
 
             eated[currentTask.resources[i].id] += 1;
+            G.CreateSFX(feedSFX, 0.65f, Random.Range(0.75f, 0.9f));
+            currentTask.DisplayUpdate();
+            GameObject pipeSphere = Instantiate(pipeSpherePref, pipeSpherePref.transform.parent);
+            pipeSphere.SetActive(true);
+            deformable.AddDeformer(pipeSphere.GetComponentInChildren<SpherifyDeformer>());
+            deformable2.AddDeformer(pipeSphere.GetComponentInChildren<SpherifyDeformer>());
+            GetComponent<Animation>().Play();
+            StartCoroutine(Shake());
+            food = true;
             break;
         }
-        G.CreateSFX(feedSFX,0.65f,Random.Range(0.75f,0.9f));
-        currentTask.DisplayUpdate();
-        GameObject pipeSphere = Instantiate(pipeSpherePref, pipeSpherePref.transform.parent);
-        pipeSphere.SetActive(true);
-        deformable.AddDeformer(pipeSphere.GetComponentInChildren<SpherifyDeformer>());
-        deformable2.AddDeformer(pipeSphere.GetComponentInChildren<SpherifyDeformer>());
-        GetComponent<Animation>().Play();
-        StartCoroutine(Shake());
+        if (!food) G.message.Message("Нет нужной еды");
     }
 
     IEnumerator Shake()

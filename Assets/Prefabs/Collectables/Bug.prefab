@@ -1051,6 +1051,8 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  pickupSFX: {fileID: 8300000, guid: 58b53ef2a2e81ca468954f9cdba9359c, type: 3}
+  canBeUsed: 1
 --- !u!114 &679284229297529681
 MonoBehaviour:
   m_ObjectHideFlags: 0

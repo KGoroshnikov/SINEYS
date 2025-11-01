@@ -498,6 +498,7 @@ MonoBehaviour:
   onPickup:
     m_PersistentCalls:
       m_Calls: []
+  pickupSFX: {fileID: 8300000, guid: 74c8440d3fe895a4395e1351c45edcf8, type: 3}
   canBeUsed: 1
 --- !u!65 &8542192239404014161
 BoxCollider:
