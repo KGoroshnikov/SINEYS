@@ -7673,8 +7673,8 @@ MonoBehaviour:
   inv: []
   uiPrefs:
   - {fileID: 7683642805155169830, guid: 9c33aaf6577f97140b4d3ff48ad4a489, type: 3}
-  - {fileID: 3949348852697079738, guid: 428fd9a3e0d500441975af358047e1ed, type: 3}
   - {fileID: 7320870378953169404, guid: dc6493a467bb129499eee0ad6e670ec2, type: 3}
+  - {fileID: 3949348852697079738, guid: 428fd9a3e0d500441975af358047e1ed, type: 3}
   spawnUIPos: {fileID: 389254626}
   offsetUI: {x: 0, y: 0, z: 0.03}
 --- !u!95 &672963684
@@ -21867,8 +21867,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1768131443}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0.999878, z: 0, w: -0.015623207}
-  m_LocalPosition: {x: 7.212453, y: 1.134479, z: -5.261919}
+  m_LocalRotation: {x: 0, y: 0.70379174, z: 0, w: 0.71040636}
+  m_LocalPosition: {x: 30.934538, y: 1.134479, z: 4.254085}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -24513,7 +24513,6 @@ GameObject:
   - component: {fileID: 2046418470}
   - component: {fileID: 2046418469}
   - component: {fileID: 2046418468}
-  - component: {fileID: 2046418467}
   - component: {fileID: 2046418466}
   m_Layer: 0
   m_Name: GameManager
@@ -24549,24 +24548,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed27eab1a87101a4baa72ebe3a07b32d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &2046418467
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2046418464}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0d52983d5c840d44ab359b036372d56a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  maxCapacity: 0
-  remainingCapacity: 0
-  inv: []
-  uiPrefs: []
-  spawnUIPos: {fileID: 0}
-  offsetUI: {x: 0, y: 0, z: 0}
 --- !u!114 &2046418468
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -24,7 +24,7 @@ public class WallParasite : MonoBehaviour, IUsable
             item.obj.SetActive(true);
             item.obj.transform.position = G.rigidcontroller.transform.position;
             MoveObjects.Instance.AddObjectToMove(item.obj, eatPoint.position,
-                    Quaternion.Euler(Random.Range(0, 360), Random.Range(0, 360), Random.Range(0, 360)), 0.2f, EatObject);
+                    Quaternion.Euler(Random.Range(0, 360), Random.Range(0, 360), Random.Range(0, 360)), 0.4f, EatObject);
 
             eated[currentTask.resources[i].id] += 1;
             break;

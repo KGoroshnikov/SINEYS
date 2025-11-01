@@ -44,6 +44,14 @@ public class Inventory : MonoBehaviour
         inv.Add(new ItemInv(id, obj, weight, uiicon));
     }
 
+    public void RefreshUI()
+    {
+        for(int i = 0; i < inv.Count; i++)
+        {
+            inv[i].UIObject.transform.localPosition = i * offsetUI;
+        }
+    }
+
     public int GetRemainingCapacity() => remainingCapacity;
 
     public ItemInv GetNextItem()
@@ -52,7 +60,9 @@ public class Inventory : MonoBehaviour
 
         ItemInv item = inv[inv.Count - 1];
         remainingCapacity += item.weight;
+        Destroy(item.UIObject);
         inv.RemoveAt(inv.Count - 1);
+        RefreshUI();
 
         return item;
     }
@@ -65,7 +75,9 @@ public class Inventory : MonoBehaviour
             {
                 ItemInv item = inv[i];
                 remainingCapacity += item.weight;
+                Destroy(item.UIObject);
                 inv.RemoveAt(i);
+                RefreshUI();
                 return item;
             }
         }
