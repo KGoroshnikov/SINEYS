@@ -101,6 +101,7 @@ public class ItemSpawner : MonoBehaviour
                                         Quaternion.Euler(Vector3.zero));
                 spawnedObj.transform.SetParent(allStorages[0].transform.parent);
                 spawnedItems.Add(spawnedObj);
+                spawnedObj.GetComponent<Item>().onPickup.AddListener(ItemTaken);
             }
         }
 
@@ -108,7 +109,7 @@ public class ItemSpawner : MonoBehaviour
 
     public void ItemTaken(GameObject item)
     {
-        
+        spawnedItems.Remove(item);
     }
     
     // called from anim
