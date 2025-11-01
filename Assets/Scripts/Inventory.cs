@@ -56,4 +56,19 @@ public class Inventory : MonoBehaviour
 
         return item;
     }
+
+    public ItemInv GetSpecificItem(int id)
+    {
+        for(int i = 0; i < inv.Count; i++)
+        {
+            if (inv[i].id == id)
+            {
+                ItemInv item = inv[i];
+                remainingCapacity += item.weight;
+                inv.RemoveAt(i);
+                return item;
+            }
+        }
+        return null;
+    }
 }
