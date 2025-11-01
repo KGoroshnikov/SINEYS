@@ -20,6 +20,7 @@ public class G
     public static RigidbodyFirstPersonController rigidcontroller;
     public static MiniGame miniGame;
     public static Crane crane;
+    public static DeathSystem deathSystem;
     public static Inventory inventory;
     public static RayCast raycast;
     public static Fader fader;
