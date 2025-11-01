@@ -42,7 +42,7 @@ public class Heart : MonoBehaviour
 
         if (mainArrowT >= 1)
         {
-            Debug.Log("PLAYER DED");
+            G.deathSystem.PlayerDied(1);
         }
     }
 
