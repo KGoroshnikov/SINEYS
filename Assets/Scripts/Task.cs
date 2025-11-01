@@ -1,0 +1,62 @@
+using System.Collections.Generic;
+using System.Linq;
+using TMPro;
+using UnityEngine;
+using UnityEngine.UI;
+
+public class Task : MonoBehaviour
+{
+    public TaskResource[] resources;
+    public GameObject next;
+    public GameObject iconPref;
+    List<GameObject> itemSlots;
+    private void Start()
+    {
+        itemSlots = new List<GameObject>();
+        for (int i = 0; i < resources.Length; i++)
+        {
+            GameObject icon = Instantiate(iconPref, iconPref.transform.parent);
+            resources[i].count = Random.Range(resources[i].ranCount.x, resources[i].ranCount.y);
+            icon.GetComponentInChildren<TextMeshProUGUI>().text = "0/"+resources[i].count;
+            icon.GetComponent<RawImage>().texture = G.container.icons[resources[i].id];
+            itemSlots.Add(icon);
+            if (resources[i].count <= 0) icon.SetActive(false);
+        }
+        G.parasite.currentTask = this;
+        Destroy(iconPref);
+    }
+
+    public void DisplayUpdate()
+    {
+        for (int i = 0; i < itemSlots.Count; i++)
+        {
+            itemSlots[i].GetComponentInChildren<TextMeshProUGUI>().text = $"{G.parasite.eated[resources[i].id]}/{resources[i].count}";
+        }
+    }
+
+    public void NextTask()
+    {
+        if (CheckTask())
+        {
+            next.SetActive(true);
+            gameObject.SetActive(false);
+            G.parasite.ResetEated();
+        }
+        else G.message.Message("Недостаточно предметов");
+    }
+    public bool CheckTask()
+    {
+        for (int i = 0; i < resources.Length; i++)
+        {
+            if (G.parasite.eated[resources[i].id] < resources[i].count) return false;
+        }
+        return true;
+    }
+}
+[System.Serializable]
+public class TaskResource
+{
+    public int id;
+    [HideInInspector] public int count;
+    public Vector2Int ranCount;
+}
