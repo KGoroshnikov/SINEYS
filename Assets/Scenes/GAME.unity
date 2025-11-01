@@ -5497,24 +5497,32 @@ MonoBehaviour:
   - itemsToSpawn:
     - randAmount: {x: 9, y: 15}
       itemPref: {fileID: 9039788079498859592, guid: 3634fbf277ac923498b3ea07e4f990b2, type: 3}
+      spawnLvls: 000000000100000002000000
   - itemsToSpawn:
     - randAmount: {x: 12, y: 17}
       itemPref: {fileID: 9039788079498859592, guid: 3634fbf277ac923498b3ea07e4f990b2, type: 3}
+      spawnLvls: 000000000100000002000000
   - itemsToSpawn:
     - randAmount: {x: 12, y: 17}
       itemPref: {fileID: 9039788079498859592, guid: 3634fbf277ac923498b3ea07e4f990b2, type: 3}
+      spawnLvls: 000000000100000002000000
     - randAmount: {x: 1, y: 2}
       itemPref: {fileID: 394842124809568579, guid: cd1132d60e672b74ea8c6631b50d92ad, type: 3}
+      spawnLvls: 03000000
   - itemsToSpawn:
     - randAmount: {x: 15, y: 20}
       itemPref: {fileID: 9039788079498859592, guid: 3634fbf277ac923498b3ea07e4f990b2, type: 3}
+      spawnLvls: 000000000100000002000000
     - randAmount: {x: 3, y: 5}
       itemPref: {fileID: 394842124809568579, guid: cd1132d60e672b74ea8c6631b50d92ad, type: 3}
+      spawnLvls: 03000000
   - itemsToSpawn:
     - randAmount: {x: 15, y: 20}
       itemPref: {fileID: 9039788079498859592, guid: 3634fbf277ac923498b3ea07e4f990b2, type: 3}
+      spawnLvls: 000000000100000002000000
     - randAmount: {x: 3, y: 5}
       itemPref: {fileID: 394842124809568579, guid: cd1132d60e672b74ea8c6631b50d92ad, type: 3}
+      spawnLvls: 03000000
   currentTier: 3
   allStorages:
   - {fileID: 535651934}
@@ -22058,8 +22066,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1155041176}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.000000008719855, y: -0.059303537, z: -5.1802995e-10, w: 0.99824}
-  m_LocalPosition: {x: 48.74678, y: 1.5281699, z: 6.05866}
+  m_LocalRotation: {x: -0.000000003039809, y: -0.7027632, z: -0.0000000030028036, w: 0.7114239}
+  m_LocalPosition: {x: 53.85421, y: 1.52817, z: 1.3365993}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -26709,8 +26717,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1380429423}
   serializedVersion: 2
-  m_LocalRotation: {x: -1.070917e-11, y: 0.9999989, z: 0.000000007246477, w: 0.0014778434}
-  m_LocalPosition: {x: 134.94516, y: 1.5281699, z: -8.392888}
+  m_LocalRotation: {x: -0.000000005597321, y: 0.7008053, z: 0.000000005498868, w: 0.7133526}
+  m_LocalPosition: {x: 114.04747, y: 1.52817, z: -12.264185}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:

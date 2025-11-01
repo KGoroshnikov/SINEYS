@@ -10,6 +10,7 @@ public class ItemSpawner : MonoBehaviour
     {
         public Vector2Int randAmount;
         public GameObject itemPref;
+        public List<int> spawnLvls;
     }
 
     [System.Serializable]
@@ -45,7 +46,7 @@ public class ItemSpawner : MonoBehaviour
     {
         // respawn storages
         List<Storage> newStorages = new List<Storage>();
-        List<Transform> availPosesForItems = new List<Transform>();
+        Dictionary<int, List<Transform>> allPosesForLvls = new Dictionary<int, List<Transform>>();
         for (int i = 0; i < allStorages.Count; i++)
         {
             GameObject newStorate = Instantiate(storagesPrefs[Random.Range(0, storagesPrefs.Length)], allStorages[i].transform.position, allStorages[i].transform.rotation);
@@ -53,7 +54,18 @@ public class ItemSpawner : MonoBehaviour
             Destroy(allStorages[i].gameObject);
             Storage st = newStorate.GetComponent<Storage>();
             newStorages.Add(st);
-            availPosesForItems.AddRange(st.GetPositions());
+            List<Storage.Lvl> lvls = st.GetPositions();
+            for(int lv = 0; lv < lvls.Count; lv++)
+            {
+                if (allPosesForLvls.ContainsKey(lv))
+                {
+                    allPosesForLvls[lv].AddRange(lvls[lv].possiblePosition);
+                }
+                else
+                {
+                    allPosesForLvls.Add(lv, lvls[lv].possiblePosition);
+                }
+            }
         }
         allStorages.Clear();
         allStorages = newStorages;
@@ -73,19 +85,30 @@ public class ItemSpawner : MonoBehaviour
         {
             ItemToSpawn currentItem = allTiers[currentTier].itemsToSpawn[i];
             int amountOfObject = Random.Range(currentItem.randAmount.x, currentItem.randAmount.y);
+
             for (int j = 0; j < amountOfObject; j++)
             {
-                int idxSpawn = Random.Range(0, availPosesForItems.Count);
+                int chosenLvl = currentItem.spawnLvls[Random.Range(0, currentItem.spawnLvls.Count)];
+                int idxSpawn = Random.Range(0, allPosesForLvls[chosenLvl].Count);
+
+                List<Transform> newPoses = allPosesForLvls[chosenLvl];
+                Transform chosenPos = newPoses[idxSpawn];
+                newPoses.RemoveAt(idxSpawn);
+                allPosesForLvls[chosenLvl] = newPoses;
+
                 GameObject spawnedObj = Instantiate(currentItem.itemPref,
-                                        availPosesForItems[idxSpawn].position,
+                                        chosenPos.position,
                                         Quaternion.Euler(Vector3.zero));
                 spawnedObj.transform.SetParent(allStorages[0].transform.parent);
                 spawnedItems.Add(spawnedObj);
-
-                availPosesForItems.RemoveAt(idxSpawn);
             }
         }
 
+    }
+
+    public void ItemTaken(GameObject item)
+    {
+        
     }
     
     // called from anim
