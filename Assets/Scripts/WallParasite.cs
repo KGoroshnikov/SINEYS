@@ -15,6 +15,7 @@ public class WallParasite : MonoBehaviour, IUsable
     public Animation animDeath;
     public GameObject bloodScreen;
     public GameObject fossil;
+    public AudioClip feedSFX;
     private void Awake()
     {
         G.parasite = this;
@@ -38,6 +39,7 @@ public class WallParasite : MonoBehaviour, IUsable
                     Quaternion.Euler(Random.Range(0, 360), Random.Range(0, 360), Random.Range(0, 360)), 0.4f, EatObject);
 
             eated[currentTask.resources[i].id] += 1;
+            G.CreateSFX(feedSFX);
             break;
         }
 

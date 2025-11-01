@@ -25,13 +25,14 @@ public class Upgrade : MonoBehaviour
     {
         if (CheckResources())
         {
+            G.CreateSFX(G.gm.upgradeSFX);
             switch (upgradeId)
             {
                 case 0:
                     G.rigidcontroller.movementSettings.JumpForce = value;
                     break;
                 case 1:
-                    //G.inventory.capacity = value;
+                    G.inventory.maxCapacity = (int)value;
                     break;
             }
             gameObject.SetActive(false);

@@ -8,6 +8,7 @@ public class Item : MonoBehaviour, IUsable
     [SerializeField] private Collider col;
     [SerializeField] private int weight;
     public UnityEvent<GameObject> onPickup;
+    public AudioClip pickupSFX;
 
     public void Use()
     {
@@ -23,6 +24,7 @@ public class Item : MonoBehaviour, IUsable
         if (col != null)
             col.enabled = false;
         MoveObjects.Instance.AddObjectToMove(gameObject, G.rigidcontroller.transform.position, Quaternion.identity, 0.3f, CollectObject);
+        G.CreateSFX(pickupSFX);
     }
 
     public void CollectObject(GameObject obj)

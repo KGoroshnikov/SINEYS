@@ -6,6 +6,8 @@ public class GameManager : MonoBehaviour
     public GameObject cursor;
     [HideInInspector] public bool cantEsc;
     [HideInInspector] public bool cantZoom;
+
+    public AudioClip upgradeSFX;
     private void Awake()
     {
         G.gm = this;
@@ -53,6 +55,7 @@ public class G
 
     public static void CreateSFX(AudioClip clip, float volume = 1, float pitch = 1)
     {
+        if (clip == null) return;
         GameObject sfx = new GameObject("SFX");
         AudioSource asfx = sfx.AddComponent<AudioSource>();
         asfx.clip = clip;
@@ -64,6 +67,7 @@ public class G
 
     public static void CreateSFX(AudioClip clip, Transform transform, float volume = 1, float pitch = 1)
     {
+        if (clip == null) return;
         GameObject sfx = new GameObject("SFX");
         AudioSource asfx = sfx.AddComponent<AudioSource>();
         asfx.clip = clip;
