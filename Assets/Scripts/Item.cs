@@ -28,7 +28,7 @@ public class Item : MonoBehaviour, IUsable
         if (col != null)
             col.enabled = false;
         MoveObjects.Instance.AddObjectToMove(gameObject, G.rigidcontroller.transform.position, Quaternion.identity, 0.3f, CollectObject);
-        G.CreateSFX(pickupSFX);
+        G.CreateSFX(pickupSFX,0.5f);
     }
 
     public void CollectObject(GameObject obj)
