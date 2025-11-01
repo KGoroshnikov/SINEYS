@@ -9,7 +9,7 @@ public class Wobble : MonoBehaviour
     private Vector3 rotation = Vector3.zero;
     private void Awake()
     {
-        //G.shaker = GetComponent<Shaker>();
+        G.shaker = GetComponent<Shaker>();
     }
 
     void Start()

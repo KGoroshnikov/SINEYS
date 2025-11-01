@@ -18,6 +18,8 @@ public class G
 {
     public static GameManager gm;
     public static RigidbodyFirstPersonController rigidcontroller;
+    public static MiniGame miniGame;
+    public static Crane crane;
     public static Inventory inventory;
     public static RayCast raycast;
     public static Fader fader;
@@ -25,6 +27,8 @@ public class G
     public static AABB2DScreenOutline aabb;
     public static MessageManager message;
     public static SmoothAudio smoothAudio;
+    public static Consumer consumer;
+    public static Container container;
     public static void ShowCursor()
     {
         Cursor.lockState = CursorLockMode.Confined;
