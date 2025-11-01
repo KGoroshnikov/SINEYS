@@ -149,7 +149,7 @@ Material:
     m_Colors:
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
-    - _Emission: {r: 9.4043255, g: 0.32530576, b: 0.32530576, a: 0}
+    - _Emission: {r: 0.34591186, g: 0, b: 0, a: 0}
     - _EmissionColor: {r: 4.2870936, g: 0, b: 0, a: 1}
     - _GlowColor: {r: 2, g: 2, b: 2, a: 0}
     - _GlowRange: {r: 0.5, g: 1, b: 0, a: 0}
