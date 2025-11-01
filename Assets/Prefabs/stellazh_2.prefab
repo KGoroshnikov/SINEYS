@@ -772,16 +772,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c5032e91ee873e40bf2ce155d114d23, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  possiblePosition:
-  - {fileID: 8122601270836446579}
-  - {fileID: 3983229812244050351}
-  - {fileID: 6661906166514829940}
-  - {fileID: 2700107258213859727}
-  - {fileID: 5202886820424842127}
-  - {fileID: 1361162339178149823}
-  - {fileID: 4499863527154701815}
-  - {fileID: 8639033888266917354}
-  - {fileID: 7510010601072081778}
+  allLvls:
+  - possiblePosition:
+    - {fileID: 8122601270836446579}
+    - {fileID: 3983229812244050351}
+  - possiblePosition:
+    - {fileID: 6661906166514829940}
+    - {fileID: 2700107258213859727}
+    - {fileID: 5202886820424842127}
+  - possiblePosition:
+    - {fileID: 1361162339178149823}
+    - {fileID: 8639033888266917354}
+    - {fileID: 7510010601072081778}
+  - possiblePosition:
+    - {fileID: 4499863527154701815}
 --- !u!1 &9049574726492313834
 GameObject:
   m_ObjectHideFlags: 0

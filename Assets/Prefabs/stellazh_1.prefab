@@ -399,20 +399,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c5032e91ee873e40bf2ce155d114d23, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  possiblePosition:
-  - {fileID: 6691491058909269822}
-  - {fileID: 6509412967615247440}
-  - {fileID: 4066360510801349566}
-  - {fileID: 4413055454163013359}
-  - {fileID: 2937648611643910104}
-  - {fileID: 3343275079266982475}
-  - {fileID: 510478878951419202}
-  - {fileID: 8053196080747758765}
-  - {fileID: 8203130976776650258}
-  - {fileID: 4467551261452280176}
-  - {fileID: 372473537432475329}
-  - {fileID: 1294546051045796199}
-  - {fileID: 8111894391765631132}
+  allLvls:
+  - possiblePosition:
+    - {fileID: 6691491058909269822}
+    - {fileID: 6509412967615247440}
+    - {fileID: 1294546051045796199}
+    - {fileID: 8111894391765631132}
+  - possiblePosition:
+    - {fileID: 4066360510801349566}
+    - {fileID: 372473537432475329}
+  - possiblePosition:
+    - {fileID: 4413055454163013359}
+    - {fileID: 8203130976776650258}
+    - {fileID: 4467551261452280176}
+    - {fileID: 3343275079266982475}
+  - possiblePosition:
+    - {fileID: 2937648611643910104}
+    - {fileID: 510478878951419202}
+    - {fileID: 8053196080747758765}
 --- !u!1 &3790720329837884235
 GameObject:
   m_ObjectHideFlags: 0

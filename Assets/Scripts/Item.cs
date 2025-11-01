@@ -10,8 +10,12 @@ public class Item : MonoBehaviour, IUsable
     public UnityEvent<GameObject> onPickup;
     public AudioClip pickupSFX;
 
+    [HideInInspector] public bool canBeUsed = true;
+
     public void Use()
     {
+        if (!canBeUsed) return;
+
         if (G.inventory.GetRemainingCapacity() < weight)
         {
             G.message.Message("ИНВЕНТАРЬ ПОЛОН");

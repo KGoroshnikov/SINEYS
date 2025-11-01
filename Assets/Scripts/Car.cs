@@ -6,9 +6,48 @@ public class Car : MonoBehaviour
     [SerializeField] private float colldown = 5;
     [SerializeField] private float forwardThr = 0.2f;
 
+    [SerializeField] private float mushroomGrowTime = 60;
+    [SerializeField] private Transform[] mushroomPoses;
+    [SerializeField] private GameObject[] mushrooms;
+    [SerializeField] private GameObject mushroomPref;
+
     private bool canHitPlayer = true;
 
     void ResetCD() => canHitPlayer = true;
+
+    void Start()
+    {
+        mushrooms = new GameObject[3] {null, null, null};
+        for (int i = 0; i < 3; i++) GrowMushroom();
+        InvokeRepeating("GrowMushroom", mushroomGrowTime, mushroomGrowTime);
+    }
+
+    public void MushroomTaken(GameObject obj)
+    {
+        for(int i = 0; i < mushrooms.Length; i++)
+        {
+            if (mushrooms[i] == obj)
+            {
+                mushrooms[i] = null;
+                break;
+            }
+        }
+    }
+
+    void GrowMushroom()
+    {
+        for(int i = 0; i < mushrooms.Length; i++)
+        {
+            if (mushrooms[i] != null) continue;
+
+            GameObject muushroom = Instantiate(mushroomPref, mushroomPoses[i].position, mushroomPoses[i].rotation);
+            muushroom.transform.SetParent(mushroomPoses[i]);
+            muushroom.transform.localScale = Vector3.one;
+            muushroom.GetComponent<Item>().onPickup.AddListener(MushroomTaken);
+            mushrooms[i] = muushroom;
+            return;
+        }
+    }
 
     void OnCollisionEnter(Collision collision)
     {
