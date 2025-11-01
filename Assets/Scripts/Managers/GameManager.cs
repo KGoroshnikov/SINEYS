@@ -23,6 +23,8 @@ public class G
     public static DeathSystem deathSystem;
     public static Inventory inventory;
     public static RayCast raycast;
+    public static bool playerDied;
+    public static CameraAnims cameraAnims;
     public static Fader fader;
     public static Shaker shaker;
     public static AABB2DScreenOutline aabb;

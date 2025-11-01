@@ -19,10 +19,10 @@ public class Fader : MonoBehaviour
         FadeOut(1f);
     }
 
-    public void FadeIn(float delay = 1f)
+    public void FadeIn(float delay = 1f, float targetAlpha = 1f)
     {
         StopAllCoroutines();
-        StartCoroutine(FadeTo(1f, delay));
+        StartCoroutine(FadeTo(targetAlpha, delay));
     }
 
     public void FadeOut(float delay = 1f)

@@ -68,6 +68,11 @@ public class Crane : MonoBehaviour
     {
         stopped = true;
     }
+    public void EnableCrane()
+    {
+        stopped = false;
+    }
+
 
     IEnumerator CraneLogic()
     {

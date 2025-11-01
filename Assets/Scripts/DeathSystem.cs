@@ -23,6 +23,7 @@ public class DeathSystem : MonoBehaviour
     {
         if (playerDead) return;
         playerDead = true;
+        G.playerDied = true;
         StartCoroutine(deathProcess(deathId));
     }
 
@@ -31,6 +32,8 @@ public class DeathSystem : MonoBehaviour
         // крик монстра
         G.shaker.active = true;
         yield return new WaitForSeconds(2f);
+
+        G.raycast.enabled = false;
         
         G.miniGame.AutoRelesePlayer();
         G.crane.DisableCrane();
