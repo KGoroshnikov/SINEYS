@@ -6,7 +6,11 @@ public class GameManager : MonoBehaviour
     public GameObject cursor;
     [HideInInspector] public bool cantEsc;
     [HideInInspector] public bool cantZoom;
-    private void Awake() => G.gm = this;
+    private void Awake()
+    {
+        G.gm = this;
+        G.playerDied = false;
+    }
 
     private void Start()
     {
@@ -32,6 +36,7 @@ public class G
     public static SmoothAudio smoothAudio;
     public static Consumer consumer;
     public static Container container;
+    public static WallParasite parasite;
     public static void ShowCursor()
     {
         Cursor.lockState = CursorLockMode.Confined;
