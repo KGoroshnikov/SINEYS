@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class WallParasite : MonoBehaviour, IUsable
 {
+    [SerializeField] private Heart heart;
+
     [SerializeField] private Transform eatPoint;
     public int[] eated;
     [HideInInspector] public Task currentTask;
@@ -26,6 +28,7 @@ public class WallParasite : MonoBehaviour, IUsable
     public void Use()
     {
         if (death) return;
+        heart.Fed();
         bool food = false;
         for(int i = 0; i < currentTask.resources.Length; i++)
         {
@@ -41,6 +44,8 @@ public class WallParasite : MonoBehaviour, IUsable
             MoveObjects.Instance.AddObjectToMove(item.obj, eatPoint.position,
                     Quaternion.Euler(Random.Range(0, 360), Random.Range(0, 360), Random.Range(0, 360)), 0.4f, EatObject);
 
+            heart.Fed();
+
             eated[currentTask.resources[i].id] += 1;
             G.CreateSFX(feedSFX, 0.65f, Random.Range(0.75f, 0.9f));
             currentTask.DisplayUpdate();
@@ -53,7 +58,7 @@ public class WallParasite : MonoBehaviour, IUsable
             food = true;
             break;
         }
-        if (!food) G.message.Message("Нет нужной еды");
+        if (!food) G.message.Message("пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ");
     }
 
     IEnumerator Shake()
