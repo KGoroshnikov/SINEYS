@@ -21,6 +21,12 @@ public class Heart : MonoBehaviour
     [SerializeField] private float mainArrowTimeDeath;
     private float mainArrowT;
 
+
+    [SerializeField] private float fedPenalty;
+    [SerializeField] private float fedGood;
+    [SerializeField] private float timingSpace = 0.2f;
+    private bool allowedToFeed;
+
     void Start()
     {
         StartCoroutine(matAnim());
@@ -29,6 +35,30 @@ public class Heart : MonoBehaviour
     float NormalizeAngle180(float a)
     {
         return Mathf.Repeat(a + 180f, 360f) - 180f;
+    }
+
+    public void Fed()
+    {
+        if (!allowedToFeed)
+        {
+            mainArrowT += fedPenalty;
+        }
+        else
+        {
+             mainArrowT -= fedGood;
+        }
+    }
+
+    public void Heartbeat()
+    {
+        StartCoroutine(matAnim());
+        allowedToFeed = true;
+        Invoke("StopFeedTiming", timingSpace);
+    }
+    
+    void StopFeedTiming()
+    {
+        allowedToFeed = false;
     }
 
     void Update()
@@ -66,7 +96,7 @@ public class Heart : MonoBehaviour
 
     public void StartTiming()
     {
-        StartCoroutine(matAnim());
+        
     }
     
     public void EndTiming()
