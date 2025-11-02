@@ -33,7 +33,9 @@ public class ItemSpawner : MonoBehaviour
 
     void Start()
     {
-        InvokeRepeating("RefreshStorages", 3, refreshPeriod);
+        RespawnItems();
+        SpawnEnded();
+        InvokeRepeating("RefreshStorages", refreshPeriod, refreshPeriod);
     }
 
     public void SetTier(int tier)

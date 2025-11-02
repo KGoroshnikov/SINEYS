@@ -70,7 +70,7 @@ public class Car : MonoBehaviour
 
     IEnumerator stunPlayer()
     {
-        G.CreateSFX(sbienieSFX);
+        G.CreateSFX(sbienieSFX,0.5f);
         float shakePowerSave = G.shaker.shakeStrength;
         G.shaker.shakeStrength /= 3;
         G.shaker.active = true;

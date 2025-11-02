@@ -16,7 +16,7 @@ public class Fader : MonoBehaviour
         fadeImage = GetComponent<Image>();
         fadeImage.color = Color.black;
         yield return new WaitForSeconds(0.25f);
-        FadeOut(1f);
+        FadeOut(1.5f);
     }
 
     public void FadeIn(float delay = 1f, float targetAlpha = 1f)

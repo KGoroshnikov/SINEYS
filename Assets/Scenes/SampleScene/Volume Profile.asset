@@ -16,8 +16,8 @@ MonoBehaviour:
   - {fileID: 5843753948647511033}
   - {fileID: 7714059977430859224}
   - {fileID: 3959772224873170939}
-  - {fileID: 1101098089502648820}
---- !u!114 &1101098089502648820
+  - {fileID: 2949044977558559716}
+--- !u!114 &2949044977558559716
 MonoBehaviour:
   m_ObjectHideFlags: 3
   m_CorrespondingSourceObject: {fileID: 0}
@@ -26,25 +26,37 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 66f335fb1ffd8684294ad653bf1c7564, type: 3}
-  m_Name: ColorAdjustments
+  m_Script: {fileID: 11500000, guid: cdfbdbb87d3286943a057f7791b43141, type: 3}
+  m_Name: ChannelMixer
   m_EditorClassIdentifier: 
   active: 1
-  postExposure:
+  redOutRedIn:
+    m_OverrideState: 1
+    m_Value: 88
+  redOutGreenIn:
     m_OverrideState: 1
     m_Value: 0
-  contrast:
-    m_OverrideState: 1
-    m_Value: 13
-  colorFilter:
-    m_OverrideState: 1
-    m_Value: {r: 1, g: 1, b: 1, a: 1}
-  hueShift:
+  redOutBlueIn:
     m_OverrideState: 1
     m_Value: 0
-  saturation:
+  greenOutRedIn:
     m_OverrideState: 1
     m_Value: 0
+  greenOutGreenIn:
+    m_OverrideState: 1
+    m_Value: 100
+  greenOutBlueIn:
+    m_OverrideState: 1
+    m_Value: 0
+  blueOutRedIn:
+    m_OverrideState: 1
+    m_Value: 0
+  blueOutGreenIn:
+    m_OverrideState: 1
+    m_Value: 0
+  blueOutBlueIn:
+    m_OverrideState: 1
+    m_Value: 100
 --- !u!114 &3959772224873170939
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -178,4 +190,4 @@ MonoBehaviour:
     dimension: 1
   contribution:
     m_OverrideState: 1
-    m_Value: 0.355
+    m_Value: 0.385
