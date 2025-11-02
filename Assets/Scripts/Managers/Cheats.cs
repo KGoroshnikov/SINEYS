@@ -11,7 +11,7 @@ public class Cheats : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.R))
             {
-                SceneManager.LoadScene(1);
+                SceneManager.LoadScene(2);
             }
             for (int i = 0; i <= 9; i++)
             {

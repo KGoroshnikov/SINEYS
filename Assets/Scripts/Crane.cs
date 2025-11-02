@@ -80,13 +80,13 @@ public class Crane : MonoBehaviour
         {
             while (Mathf.Abs(transform.position.x - targetPos.x) > 0.02 || Mathf.Abs(craneObj.position.z - targetPos.z) > 0.02)
             {
-                if (stopped)
+                if (stopped || G.gm.cantEsc)
                 {
                     yield return null;
                     continue;
                 }
                 if (chasingPlayer) targetPos = G.rigidcontroller.transform.position;
-
+    
                 transform.position = Vector3.MoveTowards(transform.position, new Vector3(targetPos.x, transform.position.y, transform.position.z), Time.deltaTime * speed);
                 craneObj.position = Vector3.MoveTowards(craneObj.position, new Vector3(craneObj.position.x, craneObj.position.y, targetPos.z), Time.deltaTime * speed);
                 yield return null;
@@ -97,7 +97,7 @@ public class Crane : MonoBehaviour
 
             while (craneObj.position.y > heightDown)
             {
-                if (stopped)
+                if (stopped || G.gm.cantEsc)
                 {
                     yield return null;
                     continue;
@@ -121,7 +121,7 @@ public class Crane : MonoBehaviour
 
             while (craneObj.position.y < normalHeight)
             {
-                if (stopped)
+                if (stopped || G.gm.cantEsc)
                 {
                     yield return null;
                     continue;

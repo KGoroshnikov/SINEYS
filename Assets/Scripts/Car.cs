@@ -15,9 +15,10 @@ public class Car : MonoBehaviour
 
     void ResetCD() => canHitPlayer = true;
 
-    void Start()
+
+    public void SpawnMushrooms()
     {
-        mushrooms = new GameObject[3] {null, null, null};
+        mushrooms = new GameObject[3] { null, null, null };
         for (int i = 0; i < 3; i++) GrowMushroom();
         InvokeRepeating("GrowMushroom", mushroomGrowTime, mushroomGrowTime);
     }
