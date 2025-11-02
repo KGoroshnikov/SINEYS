@@ -494,7 +494,7 @@ MonoBehaviour:
   ID: 2
   rb: {fileID: 0}
   col: {fileID: 8542192239404014161}
-  weight: 5
+  weight: 4
   onPickup:
     m_PersistentCalls:
       m_Calls: []

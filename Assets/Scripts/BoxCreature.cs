@@ -48,6 +48,7 @@ public class BoxCreature : MonoBehaviour
             hiding = true;
             animator.SetTrigger("Hide");
             Invoke("StopHiding", Random.Range(hideTime.x, hideTime.y));
+            GetComponent<BoxCollider>().enabled = false;
         }
     }
 
@@ -57,6 +58,7 @@ public class BoxCreature : MonoBehaviour
         hiding = false;
         FindATarget();
         animator.SetTrigger("Walk");
+        GetComponent<BoxCollider>().enabled = true;
     }
 
     void OnDrawGizmosSelected()

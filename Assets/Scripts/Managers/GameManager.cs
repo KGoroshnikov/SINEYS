@@ -11,6 +11,7 @@ public class GameManager : MonoBehaviour
 
     public AudioClip upgradeSFX;
     public AudioClip deathSFX;
+    public AudioClip fallSFX;
     public Transform spawnPoint;
     private void Awake()
     {
@@ -33,7 +34,17 @@ public class GameManager : MonoBehaviour
     {
         G.gm.cantEsc = true;
         G.rigidcontroller.enabled = false;
-        G.CreateSFX(deathSFX);
+        G.CreateSFX(deathSFX,0.5f,0.85f);
+        G.HideCursor();
+        G.fader.FadeIn(0.5f);
+        yield return new WaitForSeconds(1);
+        SceneManager.LoadScene(2);
+    }
+    IEnumerator Respawn()
+    {
+        G.gm.cantEsc = true;
+        G.rigidcontroller.enabled = false;
+        G.CreateSFX(fallSFX,0.5f);
         G.HideCursor();
         G.fader.FadeIn(0.5f);
         yield return new WaitForSeconds(3f);
@@ -47,6 +58,10 @@ public class GameManager : MonoBehaviour
         G.inventory.ClearInventory();
         yield return new WaitForSeconds(1.75f);
         G.message.Message("Вы потеряли свои предметы");
+    }
+    public void respawn()
+    {
+        StartCoroutine(Respawn());
     }
 
     private void Update()

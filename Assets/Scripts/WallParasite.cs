@@ -57,7 +57,7 @@ public class WallParasite : MonoBehaviour, IUsable
             food = true;
             break;
         }
-        if (!food) G.message.Message("Нет еды(");
+        if (!food) G.message.Message("Нет еды");
     }
 
     IEnumerator Shake()
