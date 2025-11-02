@@ -12,6 +12,7 @@ public class Car : MonoBehaviour
     [SerializeField] private GameObject mushroomPref;
 
     private bool canHitPlayer = true;
+    public AudioClip sbienieSFX;
 
     void ResetCD() => canHitPlayer = true;
 
@@ -69,6 +70,7 @@ public class Car : MonoBehaviour
 
     IEnumerator stunPlayer()
     {
+        G.CreateSFX(sbienieSFX);
         float shakePowerSave = G.shaker.shakeStrength;
         G.shaker.shakeStrength /= 3;
         G.shaker.active = true;

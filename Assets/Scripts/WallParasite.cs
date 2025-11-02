@@ -91,9 +91,9 @@ public class WallParasite : MonoBehaviour, IUsable
         yield return new WaitForSeconds(0.25f);
         Delay.InvokeDelayed(()=> G.CreateSFX(deathSFX, 1, 0.8f),0.2f);
         G.shaker.ShakeIt(5);
-        yield return new WaitForSeconds(4f);
+        yield return new WaitForSeconds(4.3f);
         bloodScreen.SetActive(true);
-        G.CreateSFX(explosionSFX);
+        G.CreateSFX(explosionSFX,1,0.9f);
         G.rigidcontroller.enabled = false;
         G.gm.cantEsc = true;
         yield return new WaitForSeconds(0.85f);

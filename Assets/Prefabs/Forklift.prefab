@@ -171,6 +171,7 @@ MonoBehaviour:
   - {fileID: 834303803326516906}
   mushrooms: []
   mushroomPref: {fileID: 1177202361678395545, guid: f89e04cfe98fa3e4d897e5a990def616, type: 3}
+  sbienieSFX: {fileID: 8300000, guid: 2e6b04c05098424409c1ac297fbaace2, type: 3}
 --- !u!54 &2152683812167095630
 Rigidbody:
   m_ObjectHideFlags: 0
