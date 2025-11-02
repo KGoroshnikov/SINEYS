@@ -40,7 +40,7 @@ public class Heart : MonoBehaviour
 
         pipeMat.SetColor("_EmissionColor", Color.Lerp(pipeWhite, pipeRed, mainArrowT));
 
-        if (mainArrowT >= 1)
+        if (mainArrowT >= 1 && !G.gm.cantEsc)
         {
             G.deathSystem.PlayerDied(1);
         }

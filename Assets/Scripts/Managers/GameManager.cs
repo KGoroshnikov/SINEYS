@@ -1,5 +1,7 @@
+using System.Collections;
 using UnityEngine;
-
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 public class GameManager : MonoBehaviour
 {
     public GameObject player;
@@ -8,6 +10,7 @@ public class GameManager : MonoBehaviour
     [HideInInspector] public bool cantZoom;
 
     public AudioClip upgradeSFX;
+    public AudioClip deathSFX;
     private void Awake()
     {
         G.gm = this;
@@ -17,6 +20,28 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         G.HideCursor();
+    }
+    bool deadge;
+    public void Death()
+    {
+        deadge = true;
+        StartCoroutine(SmertVnishete());
+       
+    }
+    IEnumerator SmertVnishete()
+    {
+        G.CreateSFX(deathSFX);
+        G.HideCursor();
+        G.fader.FadeIn(0.5f);
+        G.fader.GetComponent<Image>().raycastTarget = true;
+        Time.timeScale = 1;
+        yield return new WaitForSeconds(1);
+        Delay.InvokeDelayed(() => SceneManager.LoadScene(2), 1f);
+    }
+
+    private void Update()
+    {
+        if (G.playerDied && !deadge) Death();
     }
 }
 
@@ -52,6 +77,7 @@ public class G
         Cursor.visible = false;
         gm.cursor.SetActive(false);
     }
+
 
     public static void CreateSFX(AudioClip clip, float volume = 1, float pitch = 1)
     {

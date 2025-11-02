@@ -25,7 +25,7 @@ public class DeathSystem : MonoBehaviour
         if (playerDead) return;
         Debug.Log("PLAYER DIED !!!11");
         playerDead = true;
-        G.playerDied = true;
+        Delay.InvokeDelayed(() => G.playerDied = true,6f);
         StartCoroutine(deathProcess(deathId));
     }
 

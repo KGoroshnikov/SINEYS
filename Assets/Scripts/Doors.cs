@@ -25,11 +25,13 @@ public class Doors : MonoBehaviour
         doors[1].localPosition = new Vector3(doors[1].localPosition.x,
             doors[1].localPosition.y, Mathf.Clamp(doors[1].localPosition.z - currentSpeed * Time.deltaTime, -maxXCoord, -minXCoord));
 
-        if (Mathf.Abs(doors[0].localPosition.z - maxXCoord) <= 0.05f && Mathf.Abs(doors[1].localPosition.z + maxXCoord) <= 0.05f)
+        if (Mathf.Abs(doors[0].localPosition.z - maxXCoord) <= 0.05f && Mathf.Abs(doors[1].localPosition.z + maxXCoord) <= 0.05f && !G.gm.cantEsc)
         {
             G.deathSystem.PlayerDied(0);
         }
     }
+
+
 
     public void CloseDoors()
     {

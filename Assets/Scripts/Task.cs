@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using System.Linq;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.UI;
 
 public class Task : MonoBehaviour
@@ -11,6 +12,11 @@ public class Task : MonoBehaviour
     public GameObject iconPref;
     List<GameObject> itemSlots;
     public bool last;
+
+    public GameObject[] spawnPoints;
+
+
+    public UnityEvent onComplete;
     private void Start()
     {
         itemSlots = new List<GameObject>();
@@ -51,6 +57,18 @@ public class Task : MonoBehaviour
             next.SetActive(true);
             gameObject.SetActive(false);
             G.parasite.ResetEated();
+            onComplete?.Invoke();
+            if(spawnPoints.Length > 0)
+            {
+                for (int i = 0; i < spawnPoints.Length; i++)
+                {
+                    if (spawnPoints[i].GetComponentInChildren<Car>())
+                    {
+                        spawnPoints[i].GetComponentInChildren<Car>().SpawnMushrooms();
+                    }
+                    spawnPoints[i].SetActive(true);
+                }
+            }
         }
         else G.message.Message("Недостаточно предметов");
     }

@@ -36,6 +36,11 @@ public class ItemSpawner : MonoBehaviour
         InvokeRepeating("RefreshStorages", 3, refreshPeriod);
     }
 
+    public void SetTier(int tier)
+    {
+        currentTier = tier;
+    }
+
     void RefreshStorages()
     {
         animator.SetTrigger("Swap");
