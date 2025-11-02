@@ -58,6 +58,7 @@ public class Task : MonoBehaviour
             gameObject.SetActive(false);
             G.parasite.ResetEated();
             onComplete?.Invoke();
+            G.heart.mainArrowT = 0;
             if(spawnPoints.Length > 0)
             {
                 for (int i = 0; i < spawnPoints.Length; i++)

@@ -64,6 +64,7 @@ public class G
     public static Consumer consumer;
     public static Container container;
     public static WallParasite parasite;
+    public static Heart heart;
     public static void ShowCursor()
     {
         Cursor.lockState = CursorLockMode.Confined;

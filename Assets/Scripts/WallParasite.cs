@@ -28,7 +28,6 @@ public class WallParasite : MonoBehaviour, IUsable
     public void Use()
     {
         if (death) return;
-        heart.Fed();
         bool food = false;
         for(int i = 0; i < currentTask.resources.Length; i++)
         {
@@ -58,7 +57,7 @@ public class WallParasite : MonoBehaviour, IUsable
             food = true;
             break;
         }
-        if (!food) G.message.Message("��� ������ ���");
+        if (!food) G.message.Message("Нет еды(");
     }
 
     IEnumerator Shake()

@@ -19,14 +19,20 @@ public class Heart : MonoBehaviour
 
     [SerializeField] private Vector2 mainArrowAngles;
     [SerializeField] private float mainArrowTimeDeath;
-    private float mainArrowT;
+    public float mainArrowT;
 
 
     [SerializeField] private float fedPenalty;
     [SerializeField] private float fedGood;
     [SerializeField] private float timingSpace = 0.2f;
     private bool allowedToFeed;
+    Animator animator;
 
+    private void Awake()
+    {
+        G.heart = this;
+        animator = GetComponent<Animator>();
+    }
     void Start()
     {
         StartCoroutine(matAnim());
@@ -51,6 +57,7 @@ public class Heart : MonoBehaviour
 
     public void Heartbeat()
     {
+        animator.SetTrigger("Beat");
         StartCoroutine(matAnim());
         allowedToFeed = true;
         Invoke("StopFeedTiming", timingSpace);
