@@ -54,7 +54,7 @@ public class GameManager : MonoBehaviour
         G.rigidcontroller.enabled = true;
         G.playerDied = false;
         deadge = false;
-        G.heart.mainArrowT = 0;
+        //G.heart.mainArrowT = 0;
         G.inventory.ClearInventory();
         yield return new WaitForSeconds(1.75f);
         G.message.Message("Вы потеряли свои предметы");

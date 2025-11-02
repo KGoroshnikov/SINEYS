@@ -135,7 +135,7 @@ public class Car : MonoBehaviour
         if (!G.playerDied)
         {
             G.cameraAnims.Getup();
-            G.crane.DisableCrane();
+            G.crane.EnableCrane();
             G.rigidcontroller.SetFreezeState(false);
         }
     }

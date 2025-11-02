@@ -18,7 +18,7 @@ public class Item : MonoBehaviour, IUsable
 
         if (G.inventory.GetRemainingCapacity() < weight)
         {
-            G.message.Message("ИНВЕНТАРЬ ПОЛОН");
+            G.message.Message("Не хватает места");
             return;
         }
         if (rb != null)

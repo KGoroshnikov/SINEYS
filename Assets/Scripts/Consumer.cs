@@ -15,7 +15,7 @@ public class Consumer : MonoBehaviour, IUsable
         ItemInv item = G.inventory.GetNextItem();
         if (item == null)
         {
-            G.message.Message("Нет предметов");
+            G.message.Message("Нехватает ресурсов");
             return;
         }
         item.obj.SetActive(true);
