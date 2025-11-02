@@ -7,4 +7,9 @@ public class StartCS : MonoBehaviour
     {
         SceneManager.LoadScene("GAME");
     }
+
+    public void LoadMenu()
+    {
+        SceneManager.LoadScene("MENU");
+    }
 }
