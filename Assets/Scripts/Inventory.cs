@@ -52,6 +52,16 @@ public class Inventory : MonoBehaviour
         }
     }
 
+    public void ClearInventory()
+    {
+        for (int i = 0; i < inv.Count; i++)
+        {
+            Destroy(inv[i].UIObject);
+            Destroy(inv[i].obj);
+        }
+        inv.Clear();
+    }
+
     public int GetRemainingCapacity() => remainingCapacity;
 
     public ItemInv GetNextItem()

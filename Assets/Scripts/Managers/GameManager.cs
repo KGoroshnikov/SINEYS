@@ -11,6 +11,7 @@ public class GameManager : MonoBehaviour
 
     public AudioClip upgradeSFX;
     public AudioClip deathSFX;
+    public Transform spawnPoint;
     private void Awake()
     {
         G.gm = this;
@@ -30,13 +31,22 @@ public class GameManager : MonoBehaviour
     }
     IEnumerator SmertVnishete()
     {
+        G.gm.cantEsc = true;
+        G.rigidcontroller.enabled = false;
         G.CreateSFX(deathSFX);
         G.HideCursor();
         G.fader.FadeIn(0.5f);
-        G.fader.GetComponent<Image>().raycastTarget = true;
-        Time.timeScale = 1;
-        yield return new WaitForSeconds(1);
-        Delay.InvokeDelayed(() => SceneManager.LoadScene(2), 1f);
+        yield return new WaitForSeconds(3f);
+        G.rigidcontroller.transform.position = spawnPoint.position;
+        G.fader.FadeOut(1);
+        G.gm.cantEsc = false;
+        G.rigidcontroller.enabled = true;
+        G.playerDied = false;
+        deadge = false;
+        G.heart.mainArrowT = 0;
+        G.inventory.ClearInventory();
+        yield return new WaitForSeconds(1.75f);
+        G.message.Message("Вы потеряли свои предметы");
     }
 
     private void Update()
