@@ -11,10 +11,45 @@ public class Car : MonoBehaviour
     [SerializeField] private GameObject[] mushrooms;
     [SerializeField] private GameObject mushroomPref;
 
+    [SerializeField] private Transform[] pointsPath;
+    [SerializeField] private float moveSpeed = 6f;   // скорость движения (м/с)
+    [SerializeField] private float turnSpeed = 3f;   // скорость поворота (чем больше — тем быстрее поворот)
+    [SerializeField] private float reachDistance = 0.5f;
+    private int currentTarget = 0;
     private bool canHitPlayer = true;
+
     public AudioClip sbienieSFX;
 
     void ResetCD() => canHitPlayer = true;
+
+    void Update()
+    {
+        FollowPathUpdate();
+    }
+
+    void FollowPathUpdate()
+    {
+        Transform targetT = pointsPath[currentTarget];
+        Vector3 toTarget = targetT.position - transform.parent.position;
+
+        Vector3 toTargetFlat = new Vector3(toTarget.x, 0f, toTarget.z);
+
+        if (toTargetFlat.sqrMagnitude <= reachDistance * reachDistance)
+        {
+            currentTarget = (currentTarget + 1) % pointsPath.Length;
+            targetT = pointsPath[currentTarget];
+            toTarget = targetT.position - transform.parent.position;
+            toTargetFlat = new Vector3(toTarget.x, 0f, toTarget.z);
+        }
+
+        if (toTargetFlat.sqrMagnitude > 0.0001f)
+        {
+            Quaternion desiredRot = Quaternion.LookRotation(toTargetFlat.normalized, Vector3.up);
+            transform.parent.rotation = Quaternion.Slerp(transform.parent.rotation, desiredRot, turnSpeed * Time.deltaTime);
+        }
+
+        transform.parent.position += transform.parent.forward * moveSpeed * Time.deltaTime;
+    }
 
 
     public void SpawnMushrooms()
