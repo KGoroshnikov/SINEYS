@@ -51,6 +51,14 @@ public class Inventory : MonoBehaviour
             inv[i].UIObject.transform.localPosition = i * offsetUI;
         }
     }
+    public void RefreshCapacity()
+    {
+        remainingCapacity = maxCapacity;
+        for (int i = 0; i < inv.Count; i++)
+        {
+            remainingCapacity -= inv[i].weight;
+        }
+    }
 
     public void ClearInventory()
     {

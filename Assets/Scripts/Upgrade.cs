@@ -33,6 +33,7 @@ public class Upgrade : MonoBehaviour
                     break;
                 case 1:
                     G.inventory.maxCapacity = (int)value;
+                    G.inventory.RefreshCapacity();
                     break;
             }
             gameObject.SetActive(false);

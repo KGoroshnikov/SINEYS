@@ -88,6 +88,7 @@ public class Car : MonoBehaviour
 
     void OnCollisionEnter(Collision collision)
     {
+        if (G.gm.cantEsc) return;
         Debug.Log(collision.gameObject);
         if (!collision.gameObject.CompareTag("Player") || !canHitPlayer) return;
 
